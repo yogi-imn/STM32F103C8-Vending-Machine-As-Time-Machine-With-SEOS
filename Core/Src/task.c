@@ -73,7 +73,7 @@ void Task_Run(void){
 			UART_print("Tekan Cancel u/ Batal \n\r");
 			Kondisi=buzzerdelay;
 		}
-		if(PB1000_OK()){
+		else if(PB1000_OK()){
 			UART_print("Saldo Rp1000 \n\r");
 			jeda=100;
 			Kondisibaru=st1000;
@@ -97,7 +97,7 @@ void Task_Run(void){
 			UART_print("Tekan Cancel u/ Batal \n\r");
 			Kondisi=buzzerdelay;
 		}
-		if(PB1000_OK()){
+		else if(PB1000_OK()){
 			UART_print("Saldo Lebih Rp500 \n\r");
 			jeda=800;
 			Kondisibaru=stk500;
@@ -106,7 +106,7 @@ void Task_Run(void){
 		}
 		if(PBBATAL_OK()){
 			UART_print("Saldo Rp0 \n\r");
-			jeda=200;
+			jeda=500;
 			Kondisibaru=stk500;
 			Kondisi=buzzerdelay;
 		}
@@ -123,7 +123,7 @@ void Task_Run(void){
 			pressed=U500;
 			Kondisi=buzzerdelay;
 		}
-		if(PB1000_OK()){
+		else if(PB1000_OK()){
 			UART_print("Saldo Lebih Rp1000 \n\r");
 			jeda=800;
 			Kondisibaru=stk1000;
@@ -138,7 +138,7 @@ void Task_Run(void){
 		}
 		else if(PBBATAL_OK()){
 			UART_print("Saldo Rp0 \n\r");
-			jeda=200;
+			jeda=500;
 			Kondisibaru=stk1000;
 			Kondisi=buzzerdelay;
 		}
@@ -156,7 +156,7 @@ void Task_Run(void){
 			UART_print("Tekan Cancel u/ Batal \n\r");
 			Kondisi=delay;
 		}
-		if(pressed==NO){
+		else if(pressed==NO){
 		UART_print("Silahkan ambil Rp500 \n\r");
 		UDrop;
 		jeda=1000;
@@ -179,7 +179,7 @@ void Task_Run(void){
 			UART_print("Tekan Cancel u/ Batal \n\r");
 			Kondisi=delay;
 		}
-		if(pressed==NO) {
+		else if(pressed==NO) {
 		UART_print("Silahkan ambil Rp1000 \n\r");
 		jeda=1000;
 		Kondisibaru=start;
@@ -199,8 +199,8 @@ void Task_Run(void){
 	}
 	case delay:
 	{
-		jeda--;
-		if(jeda==0){
+		//jeda--;
+		if(jeda--==0){
 			Kondisi=Kondisibaru;
 		}
 		break;
@@ -208,8 +208,8 @@ void Task_Run(void){
 	case buzzerdelay:
 	{
 		buzzerON;
-		jeda--;
-		if(jeda==0){
+		//jeda--;
+		if(jeda--==0){
 			Kondisi=Kondisibaru;
 			buzzerOFF;
 		}
