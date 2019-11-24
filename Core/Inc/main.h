@@ -58,6 +58,24 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define PB500_Pin GPIO_PIN_4
+#define PB500_GPIO_Port GPIOA
+#define PB1000_Pin GPIO_PIN_5
+#define PB1000_GPIO_Port GPIOA
+#define PBPROSES_Pin GPIO_PIN_6
+#define PBPROSES_GPIO_Port GPIOA
+#define PBBATAL_Pin GPIO_PIN_7
+#define PBBATAL_GPIO_Port GPIOA
+#define Buzzer_Pin GPIO_PIN_1
+#define Buzzer_GPIO_Port GPIOB
+#define LED1_Pin GPIO_PIN_12
+#define LED1_GPIO_Port GPIOB
+#define LED2_Pin GPIO_PIN_13
+#define LED2_GPIO_Port GPIOB
+#define LED3_Pin GPIO_PIN_14
+#define LED3_GPIO_Port GPIOB
+#define LED4_Pin GPIO_PIN_15
+#define LED4_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
