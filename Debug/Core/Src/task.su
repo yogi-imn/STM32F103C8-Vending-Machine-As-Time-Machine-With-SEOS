@@ -1,0 +1,6 @@
+task.c:45:6:Task_Init	4	static
+task.c:51:6:Task_Run	8	static
+task.c:221:15:PB500_OK	16	static
+task.c:236:15:PB1000_OK	16	static
+task.c:251:15:PBPROSES_OK	16	static
+task.c:266:15:PBBATAL_OK	16	static

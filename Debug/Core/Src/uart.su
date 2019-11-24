@@ -1,0 +1,3 @@
+uart.c:10:6:UART_print	16	static
+uart.c:14:6:UART_println	24	static
+uart.c:20:6:UART_printnum	72	static
