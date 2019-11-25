@@ -20,10 +20,10 @@ unsigned char PBPROSES_OK(void);
 unsigned char PBBATAL_OK(void);
 
 //Private constant-----------------------
-#define ON			HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET)
-#define OFF			HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET)
-#define Drop		HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_RESET)
-#define Keep		HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_SET)
+#define Drop		HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET)
+#define Keep		HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET)
+#define ON			HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_RESET)
+#define OFF			HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_SET)
 #define UDrop		HAL_GPIO_WritePin(LED3_GPIO_Port,LED3_Pin,GPIO_PIN_RESET)
 #define UKeep		HAL_GPIO_WritePin(LED3_GPIO_Port,LED3_Pin,GPIO_PIN_SET)
 #define buzzerON   	HAL_GPIO_WritePin(Buzzer_GPIO_Port,Buzzer_Pin,GPIO_PIN_SET)
@@ -49,11 +49,12 @@ void Task_Init(void){
 }
 
 void Task_Run(void){
-	ON;
+	//ON;
 	switch(Kondisi)
 	{
 	case start:
 	{
+		OFF;
 		UKeep;
 		Keep;
 		UART_print("***** Vending Machine *****\n\r");
@@ -115,6 +116,7 @@ void Task_Run(void){
 
 	case st1000:
 	{
+		OFF;
 		UKeep;
 		if(PB500_OK()){
 			UART_print("Saldo Lebih Rp500 \n\r");
@@ -147,7 +149,7 @@ void Task_Run(void){
 	case stk500:
 	{
 		if(pressed==U500){
-			UDrop;
+			ON;
 			UART_print("Silahkan ambil Rp500 \n\r");
 			jeda=1000;
 			Kondisibaru=st1000;
@@ -158,7 +160,7 @@ void Task_Run(void){
 		}
 		else if(pressed==NO){
 		UART_print("Silahkan ambil Rp500 \n\r");
-		UDrop;
+		ON;
 		jeda=1000;
 		Kondisibaru=start;
 		Kondisi=delay;
@@ -180,6 +182,7 @@ void Task_Run(void){
 			Kondisi=delay;
 		}
 		else if(pressed==NO) {
+		UDrop;
 		UART_print("Silahkan ambil Rp1000 \n\r");
 		jeda=1000;
 		Kondisibaru=start;
